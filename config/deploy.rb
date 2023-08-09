@@ -13,7 +13,7 @@ namespace :deploy do
   task :bundle_install do
     on roles(:app) do
       within release_path do
-        execute :bundle, 'install --without development test'
+        execute '/home/ubuntu/.asdf/shims/bundle', 'install --without development test'
       end
     end
   end

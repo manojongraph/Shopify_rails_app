@@ -2,7 +2,7 @@
 # ======================
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
-
+set :ruby_version, '3.1.2' # Use the correct Ruby version
 server "13.53.207.136", user: "ubuntu", roles: %w{app db web}
 set :use_sudo, true
 set :deploy_to, '/var/www/myapp/staging'
