@@ -29,19 +29,19 @@ namespace :deploy do
   end
   
 
-  desc 'Start the Rails server'
-  task :start_server do
-    on roles(:app) do
-      within release_path do
-        execute '/home/ubuntu/.asdf/shims/bundle', 'exec rails server -e production -d'
-      end
-    end
-  end
+  # desc 'Start the Rails server'
+  # task :start_server do
+  #   on roles(:app) do
+  #     within release_path do
+  #       execute '/home/ubuntu/.asdf/shims/bundle', 'exec rails server -e production -d'
+  #     end
+  #   end
+  # end
 
   # Specify task order
   after 'deploy:symlink:release', 'deploy:run_bundle_install'
   after 'deploy:run_bundle_install', 'deploy:run_migrations'
-  after 'deploy:run_migrations', 'deploy:start_server'
+  # after 'deploy:run_migrations', 'deploy:start_server'
 end
 
 
