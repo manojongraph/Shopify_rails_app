@@ -5,6 +5,46 @@ set :stages, %w(staging production)
 set :default_stage, 'staging'
 
 set :application, "PaySafTrack"
+
+# config/deploy.rb
+
+namespace :deploy do
+  desc 'Install gems using Bundler'
+  task :bundle_install do
+    on roles(:app) do
+      within release_path do
+        execute :bundle, 'install --without development test'
+      end
+    end
+  end
+
+  desc 'Run database migrations'
+  task :run_migrations do
+    on roles(:db) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :bundle, 'exec rake db:migrate'
+        end
+      end
+    end
+  end
+
+  desc 'Start the Rails server'
+  task :start_server do
+    on roles(:app) do
+      within release_path do
+        execute :bundle, 'exec rails server -e production -d'
+      end
+    end
+  end
+
+  # Specify task order
+  after 'deploy:symlink:release', 'deploy:bundle_install'
+  after 'deploy:bundle_install', 'deploy:run_migrations'
+  after 'deploy:run_migrations', 'deploy:start_server'
+end
+
+
 # set :repo_url, "git@example.com:me/my_repo.git"
 
 # Default branch is :master
