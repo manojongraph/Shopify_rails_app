@@ -13,10 +13,12 @@ namespace :deploy do
   task :run_bundle_install do
     on roles(:app) do
       within release_path do
-        execute '/home/ubuntu/.asdf/shims/bundle', 'install'
+        execute :rbenv, 'local', fetch(:rbenv_ruby) # Set the Ruby version
+        execute :bundle, 'install' # Run bundle command
       end
     end
   end
+  
   
 
   desc 'Run database migrations'
