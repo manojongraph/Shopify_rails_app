@@ -24,7 +24,7 @@ namespace :deploy do
   task :run_migrations do
     on roles(:db) do
       within release_path do
-        execute 'rails', 'db:migrate'
+        execute '/home/ubuntu/.asdf/shims/rails', 'db:migrate'
       end
     end
   end
