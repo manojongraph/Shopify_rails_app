@@ -9,6 +9,7 @@ set :use_sudo, true
 set :deploy_to, '/var/www/myapp/production'
 set :ssh_options, keys: ['/home/ongraph/Downloads/paysaftrackkey.pem']
 set :rails_env, 'production'
+set :branch, 'main'
 set :repo_url, 'https://github.com/manojongraph/Shopify_rails_app.git'
 
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
