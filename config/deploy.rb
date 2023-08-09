@@ -13,10 +13,11 @@ namespace :deploy do
   task :bundle_install do
     on roles(:app) do
       within release_path do
-        execute '/home/ubuntu/.asdf/shims/bundle', 'install --without development test'
+        execute 'source /home/ubuntu/.asdf/asdf.sh', '&&', '/home/ubuntu/.asdf/shims/bundle', 'install --without development test'
       end
     end
   end
+  
 
   desc 'Run database migrations'
   task :run_migrations do
