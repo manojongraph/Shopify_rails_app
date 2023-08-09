@@ -34,7 +34,7 @@ namespace :deploy do
   task :start_server do
     on roles(:app) do
       within release_path do
-        execute :bundle, 'exec rails server -e production -d'
+        execute '/home/ubuntu/.asdf/shims/bundle', 'exec rails server -e production -d'
       end
     end
   end
