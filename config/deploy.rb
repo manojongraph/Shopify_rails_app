@@ -10,13 +10,14 @@ set :application, "PaySafTrack"
 
 namespace :deploy do
   desc 'Install gems using Bundler'
-  task :bundle_install do
+  task :run_bundle_install do
     on roles(:app) do
       within release_path do
         execute :bundle, 'install'
       end
     end
   end
+  
   
 
   desc 'Run database migrations'
@@ -40,8 +41,8 @@ namespace :deploy do
   end
 
   # Specify task order
-  after 'deploy:symlink:release', 'deploy:bundle_install'
-  after 'deploy:bundle_install', 'deploy:run_migrations'
+  after 'deploy:symlink:release', 'deploy:run_bundle_install'
+  after 'deploy:run_bundle_install', 'deploy:run_migrations'
   after 'deploy:run_migrations', 'deploy:start_server'
 end
 
