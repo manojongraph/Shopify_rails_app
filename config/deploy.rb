@@ -10,10 +10,10 @@ set :application, "PaySafTrack"
 
 namespace :deploy do
   desc 'Install gems using Bundler'
-  task :bundle_install do
+  task :run_bundle_install do
     on roles(:app) do
       within release_path do
-        execute 'source /home/ubuntu/.asdf/asdf.sh', '&&', '/home/ubuntu/.asdf/shims/bundle', 'install --without development test'
+        execute :bundle, 'install'
       end
     end
   end
