@@ -3,7 +3,7 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 set :ruby_version, '3.1.2' # Use the correct Ruby version
-server '13.53.207.136', user: 'ubuntu', roles: %w{app web db}
+server '16.170.231.148', user: 'ubuntu', roles: %w{app web db}
 set :use_sudo, true
 set :deploy_to, '/var/www/myapp/production'
 set :ssh_options, keys: ['/home/ongraph/Downloads/paysaftrackkey.pem']
