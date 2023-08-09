@@ -59,3 +59,7 @@ gem "shopify_app", "~> 21.6"
 gem "shopify_api", "~> 13.1"
 gem "dotenv-rails", "~> 2.8"
 gem "react-rails", "~> 2.7"
+
+# Gemfile
+gem 'capistrano', '~> 3.0'
+gem 'capistrano-rails', '~> 1.4'
