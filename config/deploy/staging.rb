@@ -4,9 +4,12 @@
 # You can define all roles on a single server, or split them:
 
 server "13.53.207.136", user: "ubuntu", roles: %w{app db web}
+set :use_sudo, true
 set :deploy_to, '/var/www/myapp/staging'
 set :ssh_options, keys: ['/home/ongraph/Downloads/paysaftrackkey.pem']
 set :rails_env, 'staging'
+set :repo_url, 'https://github.com/manojongraph/Shopify_rails_app.git'
+
 
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
