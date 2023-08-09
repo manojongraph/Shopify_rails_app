@@ -18,16 +18,6 @@ namespace :deploy do
     end
   end
   
-  task :generate_new_credentials do
-    on roles(:app) do
-      within release_path do
-        with rails_env: fetch(:rails_env) do
-          execute '/home/ubuntu/.asdf/shims/bundle', 'exec', 'rails', 'credentials:edit'
-        end
-      end
-    end
-  end
-  
 
   desc 'Run database migrations'
   task :run_migrations do
@@ -49,8 +39,7 @@ namespace :deploy do
   end
 
   # Specify task order
-  after 'deploy:symlink:release', 'generate_new_credentials'
-  after 'generate_new_credentials', 'deploy:run_bundle_install'
+  after 'deploy:symlink:release', 'deploy:run_bundle_install'
   after 'deploy:run_bundle_install', 'deploy:run_migrations'
   after 'deploy:run_migrations', 'deploy:start_server'
 end
