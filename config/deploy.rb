@@ -13,7 +13,7 @@ namespace :deploy do
   task :run_bundle_install do
     on roles(:app) do
       within release_path do
-        execute :bundle, 'install'
+        execute '/home/ubuntu/.asdf/shims/bundle', 'install'
       end
     end
   end
