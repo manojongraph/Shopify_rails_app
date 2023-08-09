@@ -24,12 +24,11 @@ namespace :deploy do
   task :run_migrations do
     on roles(:db) do
       within release_path do
-        with rails_env: fetch(:rails_env) do
-          execute 'rake db:migrate'
-        end
+        execute :bundle, 'exec', 'rails', 'db:migrate'
       end
     end
   end
+  
 
   desc 'Start the Rails server'
   task :start_server do
