@@ -10,7 +10,7 @@ set :application, "PaySafTrack"
 
 namespace :deploy do
   desc 'Install gems using Bundler'
-  task :run_bundle_install do
+  task :bundle_install do
     on roles(:app) do
       within release_path do
         execute :bundle, 'install'
