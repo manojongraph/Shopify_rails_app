@@ -24,7 +24,7 @@ namespace :deploy do
   task :run_migrations do
     on roles(:db) do
       within release_path do
-        execute :bundle, 'exec', 'rails', 'db:migrate'
+        execute 'rails', 'db:migrate'
       end
     end
   end
